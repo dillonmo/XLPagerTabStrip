@@ -32,6 +32,10 @@ public protocol IndicatorInfoProvider {
 
 }
 
+public protocol IndicatorTapAction {
+    func didTapIndicator()
+}
+
 public protocol PagerTabStripDelegate: class {
 
     func updateIndicator(for viewController: PagerTabStripViewController, fromIndex: Int, toIndex: Int)
