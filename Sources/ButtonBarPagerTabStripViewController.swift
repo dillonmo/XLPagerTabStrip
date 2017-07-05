@@ -297,7 +297,8 @@ open class ButtonBarPagerTabStripViewController: PagerTabStripViewController, Pa
         moveToViewController(at: indexPath.item)
         if self.viewControllers[indexPath.item] is IndicatorTapAction {
             let vc = self.viewControllers[indexPath.item] as! IndicatorTapAction
-            vc.didTapIndicator()
+            vc.didTapIndicator(fromView: cells[cells.count-1]!)
+            
         }
     }
 

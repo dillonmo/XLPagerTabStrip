@@ -33,7 +33,7 @@ public protocol IndicatorInfoProvider {
 }
 
 public protocol IndicatorTapAction {
-    func didTapIndicator()
+    func didTapIndicator(fromView: UIView)
 }
 
 public protocol PagerTabStripDelegate: class {
