@@ -202,12 +202,17 @@ open class BaseButtonBarPagerTabStripViewController<ButtonBarCellType: UICollect
     }
 
     open func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if self.viewControllers[indexPath.item] is IndicatorTapAction {
-            let vc = self.viewControllers[indexPath.item] as! IndicatorTapAction
-            vc.didTapIndicator(fromView: collectionView.cellForItem(at: indexPath)!)
-        }
+
         
-        guard indexPath.item != currentIndex else { return }
+        guard indexPath.item != currentIndex else {
+            if self.viewControllers[indexPath.item] is IndicatorTapAction {
+                let vc = self.viewControllers[indexPath.item] as! IndicatorTapAction
+                vc.didTapIndicator(fromView: collectionView.cellForItem(at: indexPath)!)
+            }
+            
+            return
+        
+        }
 
         buttonBarView.moveTo(index: indexPath.item, animated: true, swipeDirection: .none, pagerScroll: .yes)
         shouldUpdateButtonBarView = false
